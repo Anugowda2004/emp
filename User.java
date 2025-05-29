@@ -1,53 +1,32 @@
-package userservice.model;
-import jakarta.persistence.*;
+package entity;
 
-@Entity
-@Table(name = "users")
 public class User {
+	private int userId;
+    private String username;
+    private long contactNo;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @Column(nullable = false, length = 100)
-    private String name;
-
-    @Column(unique = true, nullable = false)  
-    private String email;
-    @Column(name = "phone_number", length = 15)
-    private String phoneNumber;
-
-    public User() {}
-
-    public Long getId() {
-        return id;
+    public User(int userId, String username, long contactNo) {
+        this.userId = userId;
+        this.username = username;
+        this.contactNo = contactNo;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    // Getters
+    public int getUserId() {
+        return userId;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public long getContactNo() {
+        return contactNo;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    @Override
+    public String toString() {
+        return "User [userId=" + userId + ", username=" + username + ", contactNo=" + contactNo + "]";
     }
 }
+
+
